@@ -1,4 +1,35 @@
 {% extends "base.html" %}
 {% block start %}
     <h1 class="text-primary text-center mt-4">Tiger Park Limited</h1>
+    <hr>
+    <p class="text-center fw-bold text-warning-emphasis">Data from databse dinamacly</p>
+<div class="container">
+    {% for student in students %}
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">E-mail</th>
+                  <th scope="col">Mobile</th>
+                  <th scope="col">Roll</th>
+                  <th scope="col">Semester</th>
+                  <th scope="col">Department</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{student.student_name}}</td>
+                    <td>{{student.student_email}}</td>
+                    <td>{{student.student_phone}}</td>
+                    <td>{{student.student_roll}}</td>
+                    <td>{{student.semester}}</td>
+                    <td>{{student.department}}</td>
+                </tr>
+              </tbody>
+        </table>
+    {% endfor %}
+</div>
+    
  {% endblock %}
