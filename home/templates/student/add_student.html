@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block start %}
+    <h1 class="text-primary text-center mt-4">Tiger Park Limited</h1>
+    <hr>
+    <div class="container">
+      <form class="row g-3" method="POST">
+        {% csrf_token %}
+        <div class="col-md-6">
+          <label for="inputname4" class="form-label">Name</label>
+          <input type="text" name="name" class="form-control" id="inputname4">
+        </div>
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input type="email" name="email" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-12">
+          <label for="inputRoll" class="form-label">Roll</label>
+          <input type="text" name="roll" class="form-control" id="inputRoll" placeholder="Enter Student Roll">
+        </div>
+        <div class="col-12">
+          <label for="inputPhone2" class="form-label">Phone</label>
+          <input type="number" name="phone" class="form-control" id="inputPhone2" placeholder="Enter Student Phone">
+        </div>
+        <div class="col-md-6">
+          <label for="inputDepartment" class="form-label">Department</label>
+          <select id="inputDepartment" name="department" class="form-select">
+            <option selected>Choose...</option>
+            <option>Computer Science & Technology</option>
+            <option>Civil Technology</option>
+            <option>Electrical Technology</option>
+            <option>Mechanical Technology</option>
+            <option>Automobile Technology</option>
+            <option>Textile Technology</option>
+            <option>Merine Technology</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="inputSemester" class="form-label">Semester</label>
+          <select id="inputSemester" name="semester" class="form-select">
+            <option selected>Choose...</option>
+            <option>1st</option>
+            <option>2nd</option>
+            <option>3rd</option>
+            <option>4th</option>
+            <option>5th</option>
+            <option>6th</option>
+            <option>7th</option>
+            <option>8th</option>
+          </select>
+        </div>
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <button type="submit" class="btn btn-primary w-25">Submit</button>
+        </div>
+      </form>
+    
+    </div>
+    
+ {% endblock %}

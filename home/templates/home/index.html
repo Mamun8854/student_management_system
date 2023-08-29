@@ -3,8 +3,13 @@
     <h1 class="text-primary text-center mt-4">Tiger Park Limited</h1>
     <hr>
     <p class="text-center fw-bold text-warning-emphasis">Data from databse dinamacly</p>
+    <div class="container">
+        <div class="d-flex justify-content-md-end mb-4">
+            <a href="/add/student" class="btn btn-success">Add Student</a>
+        </div>
+    </div>
 <div class="container">
-    {% for student in students %}
+    
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
@@ -18,6 +23,7 @@
                 </tr>
               </thead>
               <tbody>
+                {% for student in students %}
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
                     <td>{{student.student_name}}</td>
@@ -27,9 +33,9 @@
                     <td>{{student.semester}}</td>
                     <td>{{student.department}}</td>
                 </tr>
+                {% endfor %}
               </tbody>
         </table>
-    {% endfor %}
 </div>
     
  {% endblock %}
