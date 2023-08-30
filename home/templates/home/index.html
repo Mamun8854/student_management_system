@@ -20,6 +20,7 @@
                   <th scope="col">Roll</th>
                   <th scope="col">Semester</th>
                   <th scope="col">Department</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -32,6 +33,10 @@
                     <td>{{student.student_roll}}</td>
                     <td>{{student.semester}}</td>
                     <td>{{student.department}}</td>
+                    <td>
+                      <a class="btn btn-danger" href="{% url 'delete_student' student.id%}">Delete</a>
+                      <a class="btn btn-success" href="">Edit</a>
+                  </td>
                 </tr>
                 {% endfor %}
               </tbody>

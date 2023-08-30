@@ -1,13 +1,13 @@
+# from typing import Any, Optional
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import Student
 from django.contrib import messages
-
+from django.views.generic import RedirectView
 # Create your views here.
 
 
 class StudentView(View):
-    template_name = 'student/add_student.html'
 
     def get(self, request):
         all_student = Student.objects.all().order_by('-pk')
@@ -26,7 +26,6 @@ class AddStudent(View):
         phone = request.POST.get('phone')
         department = request.POST.get('department')
         semester = request.POST.get('semester')
-        print(name, roll, email, phone, department, semester)
 
         Student.objects.create(
             student_name=name,
@@ -38,4 +37,12 @@ class AddStudent(View):
         )
         messages.success(request, "Student added successfuly!")
         return redirect("/home")
-        # return render(request, "student/add_student.html")
+
+
+class StudentDeleteView(RedirectView):
+    url = "/home"
+
+    def get_redirect_url(self, *args, **kwargs):
+        delete_id = kwargs['id']
+        Student.objects.get(pk=delete_id).delete()
+        return super().get_redirect_url(*args, **kwargs)
