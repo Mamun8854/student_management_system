@@ -1,4 +1,3 @@
-# from typing import Any, Optional
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import Student
@@ -46,3 +45,10 @@ class StudentDeleteView(RedirectView):
         delete_id = kwargs['id']
         Student.objects.get(pk=delete_id).delete()
         return super().get_redirect_url(*args, **kwargs)
+
+
+class UpdateStudentView(View):
+    def get(self, request, id):
+        queryset = Student.objects.get(id=id)
+        context = {'student': queryset}
+        return render(request, 'student/update_student.html', context)

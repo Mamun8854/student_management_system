@@ -7,24 +7,24 @@
         {% csrf_token %}
         <div class="col-md-6">
           <label for="inputname4" class="form-label">Name</label>
-          <input type="text" name="name" class="form-control" id="inputname4">
+          <input type="text" name="name" value="{{student.student_name}}" class="form-control" id="inputname4">
         </div>
         <div class="col-md-6">
           <label for="inputEmail4" class="form-label">Email</label>
-          <input type="email" name="email" class="form-control" id="inputEmail4">
+          <input type="email" value="{{student.stident_email}}" name="email" class="form-control" id="inputEmail4">
         </div>
         <div class="col-12">
           <label for="inputRoll" class="form-label">Roll</label>
-          <input type="text" name="roll" class="form-control" id="inputRoll" placeholder="Enter Student Roll">
+          <input type="text" name="roll" value="{{student.student_roll}}" class="form-control" id="inputRoll" placeholder="Enter Student Roll">
         </div>
         <div class="col-12">
           <label for="inputPhone2" class="form-label">Phone</label>
-          <input type="number" name="phone" class="form-control" id="inputPhone2" placeholder="Enter Student Phone">
+          <input type="number" name="phone" value="{{student.student_phone}}" class="form-control" id="inputPhone2" placeholder="Enter Student Phone">
         </div>
         <div class="col-md-6">
           <label for="inputDepartment" class="form-label">Department</label>
           <select id="inputDepartment" name="department" class="form-select">
-            <option selected>Choose...</option>
+            <option selected value="">{{student.department}}</option>
             <option>Computer Science & Technology</option>
             <option>Civil Technology</option>
             <option>Electrical Technology</option>
@@ -37,7 +37,7 @@
         <div class="col-md-6">
           <label for="inputSemester" class="form-label">Semester</label>
           <select id="inputSemester" name="semester" class="form-select">
-            <option selected>Choose...</option>
+            <option selected>{{student.semester}}</option>
             <option>1st</option>
             <option>2nd</option>
             <option>3rd</option>
