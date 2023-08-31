@@ -52,3 +52,23 @@ class UpdateStudentView(View):
         queryset = Student.objects.get(id=id)
         context = {'student': queryset}
         return render(request, 'student/update_student.html', context)
+
+    def post(self, request, id):
+        queryset = Student.objects.get(pk=id)
+        data = request.POST
+        student_name = data.get('name')
+        student_email = data.get('email')
+        roll = data.get('roll')
+        student_mobile = data.get('phone')
+        department = data.get('department')
+        semester = data.get('semester')
+
+        queryset.student_name = student_name
+        queryset.stident_email = student_email
+        queryset.student_roll = roll
+        queryset.student_phone = student_mobile
+        queryset.department = department
+        queryset.semester = semester
+
+        queryset.save()
+        return redirect('/home')
