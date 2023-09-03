@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from .models import Student
+from .models import Student, Employee
 from django.contrib import messages
 from django.views.generic import RedirectView
 from django.http import HttpResponse
@@ -10,6 +10,8 @@ from weasyprint import HTML
 import tempfile
 # from django.db.models import Sum
 # Create your views here.
+
+# for student model
 
 
 class StudentView(View):
@@ -98,3 +100,12 @@ def Export_pdf(request):
         output = open(output.name, 'rb')
         response.write(output.read())
     return response
+
+
+# for employee model
+
+class EmployeeView(View):
+    def get(self, request):
+        all_employee = Employee.objects.all().order_by("-pk")
+        return render(request, 'employee/index.html',
+                      context={"employees": all_employee})

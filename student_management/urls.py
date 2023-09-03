@@ -14,6 +14,6 @@ urlpatterns = [
         name="update_student"),
     path(
         "export-pdf", views.Export_pdf,
-        name="export_pdf")
-
+        name="export_pdf"),
+    path("employee-list", views.EmployeeView.as_view(), name="employee_list")
 ]
