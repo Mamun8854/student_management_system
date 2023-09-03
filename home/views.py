@@ -81,7 +81,7 @@ class UpdateStudentView(View):
 
 
 def Export_pdf(request):
-    all_student = Student.objects.all()
+    all_student = Student.objects.all().order_by('-pk')
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'inline; filename=Student-Info' + \
         str(datetime.datetime.now())+'.pdf'
