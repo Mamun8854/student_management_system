@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block start %}
-    <h1 class="text-primary text-center mt-4">Saic Institute Of Management & Technology</h1>
+    <h1 class="text-primary text-center mt-4">Tiger Park Limited</h1>
     <hr>
     <p class="text-center fw-bold text-warning-emphasis">Data from databse dinamacly</p>
     <div class="container">
@@ -8,7 +8,7 @@
     <div class="container">
       <div class="d-flex justify-content-md-end mb-4 gap-4">
           <a href="/export-pdf" class="btn btn-info">Export PDF</a>
-          <a href="/add/student" class="btn btn-success">Add Student</a>
+          <a href="/add/student" class="btn btn-success">Add Employee</a>
         </div>
     </div>
 <div class="container">
@@ -20,22 +20,17 @@
                   <th scope="col">Name</th>
                   <th scope="col">E-mail</th>
                   <th scope="col">Mobile</th>
-                  <th scope="col">Roll</th>
-                  <th scope="col">Semester</th>
-                  <th scope="col">Department</th>
+                  <th scope="col">Address</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {% for student in students %}
+                {% for employee in employees %}
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
-                    <td>{{student.student_name}}</td>
-                    <td>{{student.stident_email}}</td>
-                    <td>{{student.student_phone}}</td>
-                    <td>{{student.student_roll}}</td>
-                    <td>{{student.semester}}</td>
-                    <td>{{student.department}}</td>
+                    <td>{{employee.employee_name}}</td>
+                    <td>{{employee.employee_email}}</td>
+                    <td>{{employee.employee_phone}}</td>
                     <td>
                       <a class="btn btn-danger" href="{% url 'delete_student' student.id%}">Delete</a>
                       <a class="btn btn-success" href="{% url 'update_student' student.id%}">Edit</a>
