@@ -11,6 +11,9 @@ urlpatterns = [
         name="delete_student"),
     path(
         "update/student/<int:id>/", views.UpdateStudentView.as_view(),
-        name="update_student")
+        name="update_student"),
+    path(
+        "export-pdf", views.Export_pdf,
+        name="export_pdf")
 
 ]

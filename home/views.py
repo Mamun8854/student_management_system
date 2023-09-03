@@ -3,6 +3,12 @@ from django.views import View
 from .models import Student
 from django.contrib import messages
 from django.views.generic import RedirectView
+from django.http import HttpResponse
+import datetime
+from django.template.loader import render_to_string
+from weasyprint import HTML
+import tempfile
+# from django.db.models import Sum
 # Create your views here.
 
 
@@ -72,3 +78,23 @@ class UpdateStudentView(View):
 
         queryset.save()
         return redirect('/home')
+
+
+def Export_pdf(request):
+    all_student = Student.objects.all()
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Desposition'] = 'attachment; filename=Expenses' + \
+        str(datetime.datetime.now())+'.pdf'
+    response['Content-Transfer-Encoding'] = "binary"
+    html_strig = render_to_string(
+        'pdf_download/pdf_output.html', {'students': all_student, 'total': 0}
+    )
+    html = HTML(string=html_strig)
+    result = html.write_pdf()
+    with tempfile.NamedTemporaryFile(delete=True) as output:
+        output.write(result)
+        output.flush()
+
+        output = open(output.name, 'rb')
+        response.write(output.read())
+    return response
