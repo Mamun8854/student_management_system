@@ -83,7 +83,7 @@ class UpdateStudentView(View):
 def Export_pdf(request):
     all_student = Student.objects.all()
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Desposition'] = 'attachment; filename=Expenses' + \
+    response['Content-Disposition'] = 'inline; filename=Student-Info' + \
         str(datetime.datetime.now())+'.pdf'
     response['Content-Transfer-Encoding'] = "binary"
     html_strig = render_to_string(
