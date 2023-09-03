@@ -10,3 +10,10 @@ class Student(models.Model):
     student_phone = models.IntegerField(default=0)
     department = models.CharField(max_length=30, blank=True, null=True)
     semester = models.CharField(max_length=10, blank=True, null=True)
+
+
+class Employee(models.Model):
+    employee_name = models.CharField(max_length=70, blank=True, null=True)
+    employee_email = models.EmailField(max_length=70, blank=True, null=True)
+    employee_phone = models.IntegerField(default=0)
+    employee_address = models.CharField(max_length=100, blank=True, null=True)

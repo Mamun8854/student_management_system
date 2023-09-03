@@ -1,5 +1,5 @@
 from django.contrib import admin
-from home.models import Student
+from home.models import Student, Employee
 # Register your models here.
 
 
@@ -12,4 +12,14 @@ class studentModelAdmin(admin.ModelAdmin):
         "student_phone",
         "department",
         "semester"
+    ]
+
+
+@admin.register(Employee)
+class EmployeeModelAdmin(admin.ModelAdmin):
+    list_display = [
+        "employee_name",
+        "employee_email",
+        "employee_phone",
+        "employee_address"
     ]
