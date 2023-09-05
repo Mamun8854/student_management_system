@@ -109,3 +109,8 @@ class EmployeeView(View):
         all_employee = Employee.objects.all().order_by("-pk")
         return render(request, 'employee/index.html',
                       context={"employees": all_employee})
+
+
+class HomePageView(View):
+    def get(self, request):
+        return render(request, 'home/home.html')
