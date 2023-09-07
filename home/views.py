@@ -113,4 +113,6 @@ class EmployeeView(View):
 
 class HomePageView(View):
     def get(self, request):
-        return render(request, 'home/home.html')
+        all_students = Student.objects.all()
+        return render(request, 'home/home.html',
+                      context={"students": all_students})
